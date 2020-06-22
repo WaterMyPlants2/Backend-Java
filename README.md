@@ -26,6 +26,14 @@ With an easy to use interface for creating a plant watering schedule tailored to
 | login POST    | /api/auth/login    |  username, password                   | axios.post('https://jren-watermyplants.herokuapp.com/api/auth/login', <br>`grant_type=password&username=${form.username}&password=${form.password}`, {<br>headers: <br>{`Basic ${btoa('lambda-client:lambda-secret')}`,<br>'Content-Type': 'application/x-www-form-urlencoded}| Returns a access token. (res.data.access_token) |
 | logout GET | /api/auth/logout |       | AxiosWithAuth (required)            | Revokes the token of current user       |
 
+
+### NOTE: ➡➡ To access endpoints for users and plants, MUST include a request header as follows ⬅⬅
+ 
+&nbsp;headers: {
+       &nbsp;&nbsp;Authorization: `Bearer ${token}`
+      &nbsp;}
+<br />
+
 ### **_EndPoints for Users_**
 
 | Method                        | Endpoint                         | Body (required)                        | Comments                           |Notes                            |
