@@ -16,7 +16,7 @@ With an easy to use interface for creating a plant watering schedule tailored to
 ### Server: https://jren-watermyplants.herokuapp.com/
 
 ### Detailed Endpoints Doc: https://jren-watermyplants.herokuapp.com/swagger-ui.html#/
-### ⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆   Belows are only some basic endpoints, check out for more endpoints   ⬆⬆⬆⬆⬆⬆⬆⬆⬆⬆
+### ⬆⬆⬆⬆⬆  Belows are only some basic endpoints, check out for more endpoints   ⬆⬆⬆⬆⬆
 
 ### **_Authentication_**
 
