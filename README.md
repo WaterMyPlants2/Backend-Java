@@ -27,7 +27,7 @@ With an easy to use interface for creating a plant watering schedule tailored to
 | logout GET | /api/auth/logout |       | AxiosWithAuth (required)            | Revokes the token of current user       |
 
 
-### NOTE: ➡➡ To access endpoints for users and plants, MUST include a request header as follows ⬅⬅
+### ➡➡ To access endpoints for users and plants, MUST include a request header as follows ⬅⬅
  
 &nbsp;headers: {
        &nbsp;&nbsp;Authorization: `Bearer ${token}`
