@@ -41,4 +41,4 @@ With an easy to use interface for creating a plant watering schedule tailored to
 | get plants  GET               | /api/plants                        |                                              |                 | Fetches all plants of current user |
 | add plant POST                | /api/plants                        | nickname, species, h2ofrequency, image       |                 | add plant to current user's plants  |
 | update plant PUT              | /api/plants/:id                    | nickname, species, h2ofrequency, image       |                 | Update plant with plant id    |
-| delete plant by Id DELETE     | /api/auth/users/classes/intensity  |                                              |                 | Delete Plant by Id |
+| delete plant by Id DELETE     | /api/plants/:id                    |                                              |                 | Delete Plant by Id |
