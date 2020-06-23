@@ -12,6 +12,6 @@ public interface RoleRepository extends CrudRepository<Role, Long> {
 
     @Transactional
     @Modifying
-    @Query(value = "UPDATE roles SET name = :name, last_modified_by = :uname, last_modified_date = CURRENT_TIMESTAMP WHERE roleid = :roleid", nativeQuery = true)
-    void updateRoleName(String uname, long roleid, String name);
+    @Query(value = "UPDATE roles SET rolename = :rolename, last_modified_by = :uname, last_modified_date = CURRENT_TIMESTAMP WHERE roleid = :roleid", nativeQuery = true)
+    void updateRoleName(String uname, long roleid, String rolename);
 }

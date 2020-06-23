@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+    <title>Coverage Report :: RoleService</title>
+    <style type="text/css">
+        @import "../../.css/coverage.css";
+    </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+    <div class="breadCrumbs">
+        [ <a href="../../index.html">all classes</a> ]
+        [ <a href="../index.html">com.lambda.watermyplants.services</a> ]
+    </div>
+
+    <h1>Coverage Summary for Class: RoleService (com.lambda.watermyplants.services)</h1>
+
+    <table class="coverageStats">
+        <tr>
+            <th class="name">Class</th>
+        </tr>
+        <tr>
+            <td class="name">RoleService</td>
+        </tr>
+
+    </table>
+
+    <br/>
+    <br/>
+
+
+    <div class="sourceCode"><i>1</i>&nbsp;package com.lambda.watermyplants.services;
+        <i>2</i>&nbsp;
+        <i>3</i>&nbsp;import com.lambda.watermyplants.models.Role;
+        <i>4</i>&nbsp;
+        <i>5</i>&nbsp;import java.util.List;
+        <i>6</i>&nbsp;
+        <i>7</i>&nbsp;public interface RoleService {
+        <i>8</i>&nbsp;
+        <i>9</i>&nbsp; List&lt;Role&gt; findAllRoles();
+        <i>10</i>&nbsp;
+        <i>11</i>&nbsp; Role findRoleById(long id);
+        <i>12</i>&nbsp;
+        <i>13</i>&nbsp; Role findByRoleName(String rolename);
+        <i>14</i>&nbsp;
+        <i>15</i>&nbsp; Role save(Role role);
+        <i>16</i>&nbsp;
+        <i>17</i>&nbsp; void deleteById(long id);
+        <i>18</i>&nbsp;
+        <i>19</i>&nbsp; Role update(Role role, long id);
+        <i>20</i>&nbsp;}
+    </div>
+</div>
+
+<div class="footer">
+
+    <div style="float:right;">generated on 2020-06-22 21:40</div>
+</div>
+</body>
+</html>

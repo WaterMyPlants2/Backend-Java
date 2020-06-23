@@ -58,7 +58,7 @@ public class ResourceServerConfig
                 .hasAnyRole("ADMIN")
                 .antMatchers(HttpMethod.PUT,
                         "/api/users/**")
-                .hasAnyRole("ADMIN")
+                .authenticated()
                 .antMatchers("/api/users/**",
                         "/oauth/revoke-token",
                         "/logout")

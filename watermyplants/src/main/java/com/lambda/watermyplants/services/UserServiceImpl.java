@@ -60,19 +60,23 @@ public class UserServiceImpl implements UserService {
 
         User newUser = new User();
 
-        if (userRepository.findByUsername(user.getUsername()) != null) {
-            throw new ResourceFoundException("Username " + user.getUsername() + " Already Exists");
-        }
-
         if (user.getUserid() != 0) {
-            User oldUser = userRepository.findById(user.getUserid())
-                    .orElseThrow(() -> new ResourceNotFoundException("User id " + user.getUserid() + " not found!"));
+            if (helperFunctions.isAuthorizedToMakeChange(user.getUsername())) {
+                User oldUser = userRepository.findById(user.getUserid())
+                        .orElseThrow(() -> new ResourceNotFoundException("User id " + user.getUserid() + " not found!"));
 
-            // delete the roles for the old user we are replacing
-            for (UserRole ur : oldUser.getRoles()) {
-                deleteUserRole(ur.getUser().getUserid(), ur.getRole().getRoleid());
+                // delete the roles for the old user we are replacing
+                for (UserRole ur : oldUser.getRoles()) {
+                    deleteUserRole(ur.getUser().getUserid(), ur.getRole().getRoleid());
+                }
+                newUser.setUserid(user.getUserid());
+            } else {
+                throw new ResourceNotFoundException("This user is not authorized to make change");
             }
-            newUser.setUserid(user.getUserid());
+        } else {
+            if (userRepository.findByUsername(user.getUsername()) != null) {
+                throw new ResourceFoundException("Username " + user.getUsername() + " Already Exists");
+            }
         }
 
         newUser.setUsername(user.getUsername().toLowerCase());
