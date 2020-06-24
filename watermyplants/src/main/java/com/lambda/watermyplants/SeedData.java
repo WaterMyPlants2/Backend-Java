@@ -10,7 +10,6 @@ import com.lambda.watermyplants.services.RoleService;
 import com.lambda.watermyplants.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
@@ -22,7 +21,7 @@ import java.util.ArrayList;
  * after the application context has been loaded.
  */
 @Transactional
-@Component
+//@Component
 public class SeedData implements CommandLineRunner {
 
     @Autowired
