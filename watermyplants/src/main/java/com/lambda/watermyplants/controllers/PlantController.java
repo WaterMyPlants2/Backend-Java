@@ -74,7 +74,8 @@ public class PlantController {
         return new ResponseEntity<>(plant, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "add a plant given in the request body to current user", response = Void.class)
+    @ApiOperation(value = "add a plant given in the request body to current user", response = Void.class,
+            notes = "\uD83D\uDEA8\uD83D\uDEA8 ONLY nickname, species, h2ofrequency, image are required to send a request \uD83D\uDEA8\uD83D\uDEA8")
     @PostMapping(value = "/api/plants", consumes = {"application/json"})
     public ResponseEntity<?> addNewPlant(@Valid @RequestBody Plant plant) {
 
@@ -94,7 +95,8 @@ public class PlantController {
         return new ResponseEntity<>(null, responseHeaders, HttpStatus.CREATED);
     }
 
-    @ApiOperation(value = "update a plant given in the request body", response = Void.class)
+    @ApiOperation(value = "update a plant given in the request body", response = Void.class,
+            notes = "\uD83D\uDEA8\uD83D\uDEA8 ONLY nickname, species, h2ofrequency, image are required to send a request \uD83D\uDEA8\uD83D\uDEA8")
     @ApiResponses(value = {@ApiResponse(code = 200,
             message = "Plant Found",
             response = Plant.class), @ApiResponse(code = 404,
