@@ -67,7 +67,7 @@ public class PlantController {
             response = Plant.class), @ApiResponse(code = 404,
             message = "Plant Not Found",
             response = ErrorDetail.class)})
-    @GetMapping(value = "/api/plants/{nickname}", produces = {"application/json"})
+    @GetMapping(value = "/api/plants/nickname/{nickname}", produces = {"application/json"})
     public ResponseEntity<?> getPlantByNickname(@PathVariable String nickname) {
 
         Plant plant = plantService.findPlantByNickname(nickname);

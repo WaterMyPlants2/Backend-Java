@@ -29,7 +29,8 @@ With an easy to use interface for creating a plant watering schedule tailored to
 
 ### ➡ To access endpoints for users and plants, MUST include a request header as follows ⬅
  
-`headers: {Authorization: 'Bearer ${token}'}`
+For GET, DELETE: `headers: {Authorization: 'Bearer ${token}'}`
+For POST, PUT, PATCH : `headers: {Authorization: 'Bearer ${token}', Content-type: 'application/json'}`
 
 ### **_EndPoints for Users_**
 
