@@ -69,7 +69,11 @@ public class OpenController {
         // return the access token
         // To get the access token, surf to the endpoint /login just as if a client had done this.
         RestTemplate restTemplate = new RestTemplate();
-        String requestURI = "http://" + httpServletRequest.getServerName() + ":" + httpServletRequest.getLocalPort() + "/api/auth/login";
+        String port = "";
+        if (httpServletRequest.getServerName().equalsIgnoreCase("localhost")) {
+            port = ":" + httpServletRequest.getLocalPort();
+        }
+        String requestURI = "http://" + httpServletRequest.getServerName() + port + "/api/auth/login";
 
         List<MediaType> acceptableMediaTypes = new ArrayList<>();
         acceptableMediaTypes.add(MediaType.APPLICATION_JSON);

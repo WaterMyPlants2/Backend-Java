@@ -16,23 +16,21 @@ With an easy to use interface for creating a plant watering schedule tailored to
 ### Server: https://jren-watermyplants.herokuapp.com/
 
 ### Detailed Endpoints Doc: https://jren-watermyplants.herokuapp.com/swagger-ui.html#/
-### ⬆⬆⬆⬆⬆  Belows are only some basic endpoints, check out for more endpoints   ⬆⬆⬆⬆⬆
+### ⬆  Belows are only some basic endpoints, check out for more endpoints   ⬆
 
 ### **_Authentication_**
 
 | Method        | Endpoint           | Body (required)                       | Comments        | Notes                                             |
 | ------------- | ------------------ | ------------------------------------- | --------------- | ------------------------------------------------- |
 | register POST | /api/auth/register |  username, password, phonenumber      |             | Creates a new user in the database.        |
-| login POST    | /api/auth/login    |  username, password                   | axios.post('https://jren-watermyplants.herokuapp.com/api/auth/login', <br>`grant_type=password&username=${form.username}&password=${form.password}`, {<br>headers: <br>{`Basic ${btoa('lambda-client:lambda-secret')}`,<br>'Content-Type': 'application/x-www-form-urlencoded}| Returns a access token. (res.data.access_token) |
+| login POST    | /api/auth/login    |  username, password                   | ` axios.post('https://jren-watermyplants.herokuapp.com/api/auth/login', <br>'grant_type=password&username=${form.username}&password=${form.password}', {<br>headers: <br>{'Basic ${btoa('lambda-client:lambda-secret')},<br>'Content-Type': 'application/x-www-form-urlencoded}) `| Returns a access token. (res.data.access_token) |
 | logout GET | /api/auth/logout |       | AxiosWithAuth (required)            | Revokes the token of current user       |
 
 
-### ➡➡ To access endpoints for users and plants, MUST include a request header as follows ⬅⬅
+### ➡ To access endpoints for users and plants, MUST include a request header as follows ⬅
  
-&nbsp;headers: {
-       &nbsp;&nbsp;Authorization: `Bearer ${token}`
-      &nbsp;}
-<br />
+For GET, DELETE: `headers: {Authorization: 'Bearer ${token}'}`
+For POST, PUT, PATCH : `headers: {Authorization: 'Bearer ${token}', Content-type: 'application/json'}`
 
 ### **_EndPoints for Users_**
 

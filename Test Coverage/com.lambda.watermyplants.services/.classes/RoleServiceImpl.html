@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+    <title>Coverage Report :: RoleServiceImpl</title>
+    <style type="text/css">
+        @import "../../.css/coverage.css";
+    </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+    <div class="breadCrumbs">
+        [ <a href="../../index.html">all classes</a> ]
+        [ <a href="../index.html">com.lambda.watermyplants.services</a> ]
+    </div>
+
+    <h1>Coverage Summary for Class: RoleServiceImpl (com.lambda.watermyplants.services)</h1>
+
+    <table class="coverageStats">
+
+        <tr>
+            <th class="name">Class</th>
+            <th class="coverageStat
+">
+                Method, %
+            </th>
+            <th class="coverageStat
+">
+                Line, %
+            </th>
+        </tr>
+        <tr>
+            <td class="name">RoleServiceImpl</td>
+            <td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+                <span class="absValue">
+    (7/ 7)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    82.6%
+  </span>
+                <span class="absValue">
+    (19/ 23)
+  </span>
+            </td>
+        </tr>
+        <tr>
+            <td class="name">RoleServiceImpl$$EnhancerBySpringCGLIB$$31acc6e4</td>
+        </tr>
+        <tr>
+            <td class="name">RoleServiceImpl$$EnhancerBySpringCGLIB$$31acc6e4$$FastClassBySpringCGLIB$$5620f96f</td>
+        </tr>
+        <tr>
+            <td class="name">RoleServiceImpl$$EnhancerBySpringCGLIB$$7714b173</td>
+        </tr>
+        <tr>
+            <td class="name">RoleServiceImpl$$EnhancerBySpringCGLIB$$7714b173$$FastClassBySpringCGLIB$$de8b953b</td>
+        </tr>
+        <tr>
+            <td class="name">RoleServiceImpl$$EnhancerBySpringCGLIB$$f554d9b</td>
+        </tr>
+        <tr>
+            <td class="name">RoleServiceImpl$$EnhancerBySpringCGLIB$$f554d9b$$FastClassBySpringCGLIB$$a9bd4052</td>
+        </tr>
+        <tr>
+            <td class="name">RoleServiceImpl$$FastClassBySpringCGLIB$$685a772c</td>
+        </tr>
+        <tr>
+            <td class="name"><strong>total</strong></td>
+            <td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+                <span class="absValue">
+    (7/ 7)
+  </span>
+            </td>
+            <td class="coverageStat">
+  <span class="percent">
+    82.6%
+  </span>
+                <span class="absValue">
+    (19/ 23)
+  </span>
+            </td>
+        </tr>
+    </table>
+
+    <br/>
+    <br/>
+
+
+    <div class="sourceCode"><i>1</i>&nbsp;package com.lambda.watermyplants.services;
+        <i>2</i>&nbsp;
+        <i>3</i>&nbsp;import com.lambda.watermyplants.exceptions.ResourceFoundException;
+        <i>4</i>&nbsp;import com.lambda.watermyplants.exceptions.ResourceNotFoundException;
+        <i>5</i>&nbsp;import com.lambda.watermyplants.models.Role;
+        <i>6</i>&nbsp;import com.lambda.watermyplants.repositories.RoleRepository;
+        <i>7</i>&nbsp;import org.springframework.beans.factory.annotation.Autowired;
+        <i>8</i>&nbsp;import org.springframework.stereotype.Service;
+        <i>9</i>&nbsp;import org.springframework.transaction.annotation.Transactional;
+        <i>10</i>&nbsp;
+        <i>11</i>&nbsp;import java.util.ArrayList;
+        <i>12</i>&nbsp;import java.util.List;
+        <i>13</i>&nbsp;
+        <i>14</i>&nbsp;@Transactional
+        <i>15</i>&nbsp;@Service(value = &quot;roleService&quot;)
+        <b class="fc"><i>16</i>&nbsp;public class RoleServiceImpl implements RoleService {</b>
+        <i>17</i>&nbsp;
+        <i>18</i>&nbsp; @Autowired
+        <i>19</i>&nbsp; private RoleRepository roleRepository;
+        <i>20</i>&nbsp;
+        <i>21</i>&nbsp; @Autowired
+        <i>22</i>&nbsp; private UserAuditing userAuditing;
+        <i>23</i>&nbsp;
+        <i>24</i>&nbsp; @Override
+        <i>25</i>&nbsp; public List&lt;Role&gt; findAllRoles() {
+        <i>26</i>&nbsp;
+        <b class="fc"><i>27</i>&nbsp; List&lt;Role&gt; roleList = new ArrayList&lt;&gt;();</b>
+        <b class="fc"><i>28</i>&nbsp; roleRepository.findAll().iterator().forEachRemaining(roleList::add);</b>
+        <b class="fc"><i>29</i>&nbsp; return roleList;</b>
+        <i>30</i>&nbsp; }
+        <i>31</i>&nbsp;
+        <i>32</i>&nbsp; @Override
+        <i>33</i>&nbsp; public Role findRoleById(long id) {
+        <i>34</i>&nbsp;
+        <b class="fc"><i>35</i>&nbsp; return roleRepository.findById(id).orElseThrow(() -&gt; new
+            ResourceNotFoundException(&quot;Role id &quot; + id + &quot; Not Found&quot;));</b>
+        <i>36</i>&nbsp; }
+        <i>37</i>&nbsp;
+        <i>38</i>&nbsp; @Override
+        <i>39</i>&nbsp; public Role findByRoleName(String rolename) {
+        <b class="fc"><i>40</i>&nbsp; Role role = roleRepository.findByRolenameIgnoreCase(rolename);</b>
+        <i>41</i>&nbsp;
+        <b class="fc"><i>42</i>&nbsp; if (role != null) {</b>
+        <b class="fc"><i>43</i>&nbsp; return role;</b>
+        <i>44</i>&nbsp; } else {
+        <b class="nc"><i>45</i>&nbsp; throw new ResourceNotFoundException(rolename);</b>
+        <i>46</i>&nbsp; }
+        <i>47</i>&nbsp; }
+        <i>48</i>&nbsp;
+        <i>49</i>&nbsp; @Transactional
+        <i>50</i>&nbsp; @Override
+        <i>51</i>&nbsp; public Role save(Role role) {
+        <i>52</i>&nbsp;
+        <b class="fc"><i>53</i>&nbsp; if (role.getUsers().size() &gt; 0) {</b>
+        <b class="nc"><i>54</i>&nbsp; throw new ResourceFoundException(&quot;User Roles are not updated through Role.&quot;);</b>
+        <i>55</i>&nbsp; }
+        <i>56</i>&nbsp;
+        <b class="fc"><i>57</i>&nbsp; return roleRepository.save(role);</b>
+        <i>58</i>&nbsp; }
+        <i>59</i>&nbsp;
+        <i>60</i>&nbsp; @Transactional
+        <i>61</i>&nbsp; @Override
+        <i>62</i>&nbsp; public void deleteById(long id) {
+        <i>63</i>&nbsp;
+        <b class="fc"><i>64</i>&nbsp; roleRepository.findById(id).orElseThrow(() -&gt; new ResourceNotFoundException(&quot;Role
+            id &quot; + id + &quot; not found!&quot;));</b>
+        <b class="fc"><i>65</i>&nbsp; roleRepository.deleteById(id);</b>
+        <b class="fc"><i>66</i>&nbsp; }</b>
+        <i>67</i>&nbsp;
+        <i>68</i>&nbsp; @Override
+        <i>69</i>&nbsp; public Role update(Role role, long id) {
+        <i>70</i>&nbsp;
+        <b class="fc"><i>71</i>&nbsp; if (role.getRolename() == null) {</b>
+        <b class="nc"><i>72</i>&nbsp; throw new ResourceNotFoundException(&quot;No role name found to
+            update!&quot;);</b>
+        <i>73</i>&nbsp; }
+        <i>74</i>&nbsp;
+        <b class="fc"><i>75</i>&nbsp; if (role.getUsers()</b>
+        <b class="fc"><i>76</i>&nbsp; .size() &gt; 0) {</b>
+        <b class="nc"><i>77</i>&nbsp; throw new ResourceFoundException(&quot;User Roles are not updated through Role.
+            See endpoint POST: users/user/{userid}/role/{roleid}&quot;);</b>
+        <i>78</i>&nbsp; }
+        <i>79</i>&nbsp;
+        <b class="fc"><i>80</i>&nbsp; Role newRole = findRoleById(id); // see if id exists</b>
+        <i>81</i>&nbsp;
+        <b class="fc"><i>82</i>&nbsp; roleRepository.updateRoleName(userAuditing.getCurrentAuditor().get(), id,
+            role.getRolename());</b>
+        <b class="fc"><i>83</i>&nbsp; return findRoleById(id);</b>
+        <i>84</i>&nbsp; }
+        <i>85</i>&nbsp;}
+    </div>
+</div>
+
+<div class="footer">
+
+    <div style="float:right;">generated on 2020-06-23 22:53</div>
+</div>
+</body>
+</html>
